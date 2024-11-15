@@ -1,0 +1,12 @@
+builds:
+  folder: builds
+default:
+  platform: android
+  type: local
+  profile: development
+checks:
+  typecheck: true
+  typecheckCommand: npx tsc --noEmit
+  continueOnFailure: true
+eas:
+  file: eas.json

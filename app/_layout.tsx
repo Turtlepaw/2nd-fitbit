@@ -12,6 +12,11 @@ import { useEffect } from "react";
 import { useColorScheme } from "@/components/useColorScheme";
 import { PaperProvider, useTheme } from "react-native-paper";
 import { View } from "@/components/Themed";
+import {
+  initializeAccount,
+  useAccounts,
+  useInitializeAccount,
+} from "@/components/useAccount";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -27,6 +32,8 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const { target, source } = useInitializeAccount();
+  const { setSourceAccount, setTargetAccount } = useAccounts();
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
@@ -36,6 +43,11 @@ export default function RootLayout() {
   useEffect(() => {
     if (error) throw error;
   }, [error]);
+
+  useEffect(() => {
+    setTargetAccount(target);
+    setTargetAccount(source);
+  }, []);
 
   useEffect(() => {
     if (loaded) {
@@ -51,8 +63,6 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   return (
     <PaperProvider>
       <Stack>

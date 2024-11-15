@@ -6,3 +6,12 @@ node_modules
 
 expo-env.d.ts
 # @end expo-cli
+
+*.env
+
+# @beaverfy/builder logs and builds
+/builder
+
+# expo
+android
+ios

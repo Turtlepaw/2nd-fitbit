@@ -29,6 +29,7 @@ export default function TabLayout() {
         headerTitleStyle: {
           color: theme.colors.onBackground,
         },
+        headerShown: false,
       }}
       tabBar={({ navigation, state, descriptors, insets }) => (
         <BottomNavigation.Bar
@@ -78,15 +79,19 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="home-filled" color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="settings"
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Settings",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="settings" color={color} />
+          ),
         }}
       />
     </Tabs>
